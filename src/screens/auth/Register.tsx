@@ -151,21 +151,7 @@ export default function ({
                 justifyContent: "center",
               }}
             >
-              <TouchableOpacity
-                onPress={() => {
-                  isDarkmode ? setTheme("light") : setTheme("dark");
-                }}
-              >
-                <Text
-                  size="md"
-                  fontWeight="bold"
-                  style={{
-                    marginLeft: 5,
-                  }}
-                >
-                  {isDarkmode ? "☀️ light theme" : "🌑 dark theme"}
-                </Text>
-              </TouchableOpacity>
+           
             </View>
           </View>
         </ScrollView>
