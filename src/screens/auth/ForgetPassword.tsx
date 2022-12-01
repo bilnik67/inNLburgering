@@ -80,7 +80,7 @@ export default function ({
                 padding: 30,
               }}
             >
-              Forget Password
+              Password forget?
             </Text>
             <Text>Email</Text>
             <TextInput
