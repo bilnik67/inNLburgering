@@ -18,6 +18,9 @@ import {
   themeColor,
 } from "react-native-rapi-ui";
 
+
+
+
 export default function ({
   navigation,
 }: NativeStackScreenProps<AuthStackParamList, "ForgetPassword">) {

@@ -3,14 +3,20 @@ import Navigation from "./src/navigation";
 import { AuthProvider } from "./src/provider/AuthProvider";
 import { ThemeProvider } from "react-native-rapi-ui";
 import { LogBox } from "react-native";
+import SplashScreen from "./src/components/SplashScreen";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { DarkTheme } from "@react-navigation/native";
+
+
 
 export default function App() {
   const images = [
     require("./assets/images/login.png"),
     require("./assets/images/register.png"),
     require("./assets/images/forget.png"),
+ 
   ];
-
+ 
   // Ignore firebase v9 AsyncStorage warning
   React.useEffect(() => {
     LogBox.ignoreLogs([
@@ -19,10 +25,18 @@ export default function App() {
   }, []);
 
   return (
-    <ThemeProvider theme="dark" images={images}>
+    
+   <SafeAreaProvider>
+    
+    <SplashScreen></SplashScreen>
+    
+     {/* <ThemeProvider theme="dark" images={images}>
       <AuthProvider>
         <Navigation />
       </AuthProvider>
-    </ThemeProvider>
+      </ThemeProvider>  */}
+    </SafeAreaProvider>
+    
+  
   );
 }
