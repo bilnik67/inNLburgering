@@ -29,8 +29,8 @@ export default function App() {
    <SafeAreaProvider>
     
     <SplashScreen></SplashScreen>
-    
-     {/* <ThemeProvider theme="dark" images={images}>
+   
+      {/* <ThemeProvider theme="dark" images={images}>
       <AuthProvider>
         <Navigation />
       </AuthProvider>
