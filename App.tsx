@@ -6,6 +6,7 @@ import { LogBox } from "react-native";
 import SplashScreen from "./src/components/SplashScreen";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { DarkTheme } from "@react-navigation/native";
+import Login from "./src/screens/auth/Login";
 
 
 
@@ -28,13 +29,18 @@ export default function App() {
     
    <SafeAreaProvider>
     
-    <SplashScreen></SplashScreen>
-   
-      {/* <ThemeProvider theme="dark" images={images}>
+  
+     
+       <ThemeProvider theme="dark" images={images}>
+        
       <AuthProvider>
+        
         <Navigation />
+        
       </AuthProvider>
-      </ThemeProvider>  */}
+      
+      </ThemeProvider>  
+      
     </SafeAreaProvider>
     
   

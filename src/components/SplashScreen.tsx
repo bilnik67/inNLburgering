@@ -4,34 +4,42 @@ import { useSafeAreaInsets, withSafeAreaInsets } from "react-native-safe-area-co
 import FadeInOut from 'react-native-fade-in-out';
 
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import animLogo from '../../assets/images/inNLburgeringlogotransp.png';
 import { Button } from "react-native-rapi-ui";
 import { AuthStackParamList } from "../types/navigation";
-import navigation from "../navigation";
 
 
 const backGColorblue = "#3366ff"
 const backGColororange = "#ff7200"
 
 
-export default function SplashScreen() {
-    navigation,
+
+export default function SplashScreen({navigation, }: NativeStackScreenProps<AuthStackParamList, "Splashscreen">) {
+  
     const edges = useSafeAreaInsets();
 
    
     const moveLogo = useRef(new Animated.ValueXY({ x: + 200, y: + 200 })).current;
     const moveText = useRef(new Animated.ValueXY({ x:  -300, y:  -300 })).current;
     const fadeAnim = useRef(new Animated.Value(0)).current;
-    const animatedStyle = {
+    const visibleAnim = useRef(new Animated.Value(0)).current;
+
+   
+        
+    const  animatedStyle = {
         opacity: fadeAnim
     }
 
     
         Animated.timing(
+           
             fadeAnim, 
             {
+            
             toValue: 1,
-            duration: 4000,
+            delay: 1000,
+            duration: 1000,
             useNativeDriver: true,
         }).start();
       
@@ -54,7 +62,7 @@ export default function SplashScreen() {
                 )
             ])
             .start(); 
-        }, 750);
+        }, 1000);
     }, [])
     useEffect(()=>{
 
@@ -112,8 +120,9 @@ export default function SplashScreen() {
             </Text> */}
             </Animated.View>
             
-                <Animated.Text style={{
+                <Animated.Text  style={{
                     opacity: fadeAnim,
+                    
                     justifyContent: "center",
                     alignItems: "center",
                     textAlign: "center",
@@ -153,7 +162,7 @@ export default function SplashScreen() {
                     
                 }}onPress={() => {
                     navigation.navigate("Login");
-                  }}
+                  }}>
                     <Text style={{
                         color: 'white',
                         fontSize: 22,

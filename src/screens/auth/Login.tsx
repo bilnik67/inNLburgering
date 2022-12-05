@@ -18,6 +18,9 @@ import {
   themeColor,
 } from "react-native-rapi-ui";
 
+const backGColorblue = "#3366ff"
+const backGColororange = "#ff7200"
+
 export default function ({
   navigation,
 }: NativeStackScreenProps<AuthStackParamList, "Login">) {
@@ -53,16 +56,17 @@ export default function ({
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: isDarkmode ? "#17171E" : themeColor.white100,
+              backgroundColor: backGColorblue,
             }}
           >
             <Image
               resizeMode="contain"
               style={{
-                height: 220,
-                width: 220,
+                height: 320,
+                width: 320,
+                marginBottom: -60,
               }}
-              source={require("../../../assets/images/login.png")}
+              source={require("../../../assets/images/inNLburgeringlogotransp.png")}
             />
           </View>
           <View
@@ -70,7 +74,7 @@ export default function ({
               flex: 3,
               paddingHorizontal: 20,
               paddingBottom: 20,
-              backgroundColor: isDarkmode ? themeColor.dark : themeColor.white,
+              backgroundColor: backGColorblue,
             }}
           >
             <Text
@@ -84,22 +88,27 @@ export default function ({
               Login
             </Text>
             <Text>Email</Text>
-            <TextInput
+            <TextInput 
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
+              placeholderTextColor={"#000"}
+              
+              backgroundColor={"#FFFFFF"}
               value={email}
               autoCapitalize="none"
               autoCompleteType="off"
               autoCorrect={false}
               keyboardType="email-address"
               onChangeText={(text) => setEmail(text)}
+              
             />
-
+            
             <Text style={{ marginTop: 15 }}>Password</Text>
             <TextInput
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your password"
               value={password}
+              backgroundColor={"#FFFFFF"}
               autoCapitalize="none"
               autoCompleteType="off"
               autoCorrect={false}

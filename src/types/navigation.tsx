@@ -4,9 +4,11 @@ export type MainStackParamList = {
 };
 
 export type AuthStackParamList = {
+	Splashscreen: undefined;
 	Login: undefined;
 	Register: undefined;
 	ForgetPassword: undefined;
+	
 };
 
 export type MainTabsParamList = {
