@@ -92,7 +92,7 @@ export default function ({
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
               placeholderTextColor={"#000"}
-              
+              style={{color: '#000'}}
               backgroundColor={"#FFFFFF"}
               value={email}
               autoCapitalize="none"
