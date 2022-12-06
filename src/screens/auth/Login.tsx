@@ -3,6 +3,7 @@ import {
   ScrollView,
   TouchableOpacity,
   View,
+  StyleSheet,
   KeyboardAvoidingView,
   Image,
 } from "react-native";
@@ -17,6 +18,7 @@ import {
   useTheme,
   themeColor,
 } from "react-native-rapi-ui";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const backGColorblue = "#3366ff"
 const backGColororange = "#ff7200"
@@ -87,45 +89,93 @@ export default function ({
             >
               Login
             </Text>
-            <Text>Email</Text>
+            <Text
+              fontWeight="bold"
+            
+            >Email</Text>
+            
             <TextInput 
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
-              placeholderTextColor={"#000"}
-              style={{color: '#000'}}
-              backgroundColor={"#FFFFFF"}
+              placeholderTextColor={"#ff0000"}
+              backgroundColor={"#2b2b2b"}
               value={email}
               autoCapitalize="none"
+              selectionColor={"#000"}
               autoCompleteType="off"
               autoCorrect={false}
               keyboardType="email-address"
               onChangeText={(text) => setEmail(text)}
+              style={{
+                color: "#000",
+              
+              }}
               
             />
             
-            <Text style={{ marginTop: 15 }}>Password</Text>
+            
+            <Text fontWeight="bold" style={{ marginTop: 15 }}>Password</Text>
             <TextInput
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your password"
               value={password}
-              backgroundColor={"#FFFFFF"}
+              backgroundColor={"#2b2b2b"}
               autoCapitalize="none"
               autoCompleteType="off"
               autoCorrect={false}
               secureTextEntry={true}
               onChangeText={(text) => setPassword(text)}
             />
-            <Button
+            
+            <TouchableOpacity
+            style={{
+              
+}}
+                onPress={() => {
+                  navigation.navigate("ForgetPassword");
+                }}
+              >
+                <Text size="md" fontWeight="bold">
+                  Forget password
+                </Text>
+              </TouchableOpacity>
+             <Button
+              
               text={loading ? "Loading" : "Continue"}
+              textStyle={{
+                color: "#000",
+              }}
               onPress={() => {
                 login();
               }}
+              color="white"
               style={{
                 marginTop: 20,
+                
               }}
               disabled={loading}
-            />
 
+              
+            />
+           <Button
+              
+              text={loading ? "Loading" : "Continue"}
+              textStyle={{
+                color: "#000",
+              }}
+              onPress={() => {
+                login();
+              }}
+              color="white"
+              style={{
+                marginTop: 20,
+                
+              }}
+              disabled={loading}
+
+              
+            />
+           
             <View
               style={{
                 flexDirection: "row",
@@ -134,7 +184,7 @@ export default function ({
                 justifyContent: "center",
               }}
             >
-              <Text size="md">Don't have an account?</Text>
+              
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate("Register");
@@ -159,15 +209,6 @@ export default function ({
                 justifyContent: "center",
               }}
             >
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("ForgetPassword");
-                }}
-              >
-                <Text size="md" fontWeight="bold">
-                  Forget password
-                </Text>
-              </TouchableOpacity>
             </View>
             <View
               style={{

@@ -56,7 +56,7 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                 Animated.timing(
                     moveLogo,
                     {
-                        toValue: -Dimensions.get('window').height + 840,
+                        toValue: -Dimensions.get('window').height + 780,
                         useNativeDriver: true
                     }
                 )
@@ -72,7 +72,7 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                 Animated.timing(
                     moveText,
                     {
-                        toValue: -Dimensions.get('window').height + 725,
+                        toValue: -Dimensions.get('window').height + 660,
                         useNativeDriver: true
                     }
                 )
@@ -106,6 +106,7 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                      
                     width:380,
                     height:380,
+                    
                     transform: [
                         
                         { translateY: moveLogo.y },
@@ -122,6 +123,7 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
             
                 <Animated.Text  style={{
                     opacity: fadeAnim,
+                    
                     
                     justifyContent: "center",
                     alignItems: "center",
@@ -147,7 +149,7 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                     }}>
                 <TouchableOpacity style={{
                     
-                    marginTop: 20,
+                    marginTop: -Dimensions.get('window').height * 0.07,
                     width: 300,
                     height: 60,
                     borderWidth: 2,
@@ -156,6 +158,7 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundColor: backGColororange,
+                
                     transform: [
                         {translateY: -50}
                     ]
@@ -163,10 +166,12 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                 }}onPress={() => {
                     navigation.navigate("Login");
                   }}>
+                    
                     <Text style={{
                         color: 'white',
                         fontSize: 22,
                         fontWeight: '900',
+                        
                         
                         
                     }}>
