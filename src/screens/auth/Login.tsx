@@ -3,6 +3,7 @@ import {
   ScrollView,
   TouchableOpacity,
   View,
+  SafeAreaView,
   StyleSheet,
   KeyboardAvoidingView,
   Image,
@@ -22,6 +23,13 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const backGColorblue = "#3366ff"
 const backGColororange = "#ff7200"
+
+const styles = StyleSheet.create({
+  underlineTextStyle: {
+    textDecorationLine: 'underline',
+  },
+});
+
 
 export default function ({
   navigation,
@@ -128,15 +136,16 @@ export default function ({
             />
             
             <TouchableOpacity
-            style={{
-              
-}}
+             style={{marginTop: 5}}
                 onPress={() => {
                   navigation.navigate("ForgetPassword");
                 }}
               >
-                <Text size="md" fontWeight="bold">
-                  Forget password
+                <Text style={
+             styles.underlineTextStyle
+             
+            }  size="md" fontWeight="bold">
+                  Forget password?
                 </Text>
               </TouchableOpacity>
              <Button
@@ -159,14 +168,14 @@ export default function ({
             />
            <Button
               
-              text={loading ? "Loading" : "Continue"}
+              text={loading ? "Loading" : "Sign Up"}
               textStyle={{
-                color: "#000",
+                color: "#fff",
               }}
               onPress={() => {
-                login();
+                navigation.navigate("Register");
               }}
-              color="white"
+              color = "#ff7200"
               style={{
                 marginTop: 20,
                 
@@ -185,21 +194,7 @@ export default function ({
               }}
             >
               
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Register");
-                }}
-              >
-                <Text
-                  size="md"
-                  fontWeight="bold"
-                  style={{
-                    marginLeft: 5,
-                  }}
-                >
-                  Register here
-                </Text>
-              </TouchableOpacity>
+              
             </View>
             <View
               style={{

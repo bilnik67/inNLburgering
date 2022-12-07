@@ -19,6 +19,9 @@ import {
   themeColor,
 } from "react-native-rapi-ui";
 
+const backGColorblue = "#3366ff"
+const backGColororange = "#ff7200"
+
 export default function ({
   navigation,
 }: NativeStackScreenProps<AuthStackParamList, "Register">) {
@@ -33,10 +36,8 @@ export default function ({
     await createUserWithEmailAndPassword(auth, email, password).catch(function (
       error: any
     ) {
-      // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // ...
       setLoading(false);
       alert(errorMessage);
     });
@@ -54,16 +55,17 @@ export default function ({
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: isDarkmode ? "#17171E" : themeColor.white100,
+              backgroundColor: backGColorblue,
             }}
           >
             <Image
               resizeMode="contain"
               style={{
-                height: 220,
-                width: 220,
+                height: 320,
+                width: 320,
+                marginBottom: -60,
               }}
-              source={require("../../../assets/images/register.png")}
+              source={require("../../../assets/images/inNLburgeringlogotransp.png")}
             />
           </View>
           <View
@@ -71,7 +73,7 @@ export default function ({
               flex: 3,
               paddingHorizontal: 20,
               paddingBottom: 20,
-              backgroundColor: isDarkmode ? themeColor.dark : themeColor.white,
+              backgroundColor: backGColorblue,
             }}
           >
             <Text
@@ -84,7 +86,10 @@ export default function ({
             >
               Register
             </Text>
-            <Text>Email</Text>
+            <Text
+              fontWeight="bold"
+            
+            >Email</Text>
             <TextInput
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
@@ -96,10 +101,10 @@ export default function ({
               onChangeText={(text) => setEmail(text)}
             />
 
-            <Text style={{ marginTop: 15 }}>Password</Text>
+<Text fontWeight="bold" style={{ marginTop: 15 }}>Password</Text>
             <TextInput
               containerStyle={{ marginTop: 15 }}
-              placeholder="Enter your password"
+              placeholder="Make a password"
               value={password}
               autoCapitalize="none"
               autoCompleteType="off"
@@ -108,12 +113,16 @@ export default function ({
               onChangeText={(text) => setPassword(text)}
             />
             <Button
-              text={loading ? "Loading" : "Create an account"}
+              text={loading ? "Loading" : "Continue"}
+              textStyle={{
+                color: "#000",
+              }}
               onPress={() => {
                 register();
               }}
+              color="white"
               style={{
-                marginTop: 20,
+                marginTop: 30,
               }}
               disabled={loading}
             />
