@@ -94,6 +94,7 @@ export default function ({
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
               value={email}
+              backgroundColor= "#fff"
               autoCapitalize="none"
               autoCompleteType="off"
               autoCorrect={false}
@@ -107,6 +108,7 @@ export default function ({
               placeholder="Make a password"
               value={password}
               autoCapitalize="none"
+              backgroundColor= "#fff"
               autoCompleteType="off"
               autoCorrect={false}
               secureTextEntry={true}
@@ -115,12 +117,12 @@ export default function ({
             <Button
               text={loading ? "Loading" : "Continue"}
               textStyle={{
-                color: "#000",
+                color: "#fff",
               }}
               onPress={() => {
                 register();
               }}
-              color="white"
+              color = "#ff7200"
               style={{
                 marginTop: 30,
               }}

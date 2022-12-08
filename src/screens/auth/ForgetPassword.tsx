@@ -91,6 +91,7 @@ export default function ({
             <TextInput
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
+              backgroundColor= "#fff"
               value={email}
               autoCapitalize="none"
               autoCompleteType="off"
@@ -101,12 +102,12 @@ export default function ({
             <Button
               text={loading ? "Loading" : "Send email"}
               textStyle={{
-                color: "#000",
+                color: "#fff",
               }}
               onPress={() => {
                 forget();
               }}
-              color="white"
+              color = "#ff7200"
               style={{
                 marginTop: 30,
               }}

@@ -16,8 +16,6 @@ import {
   Text,
   TextInput,
   Button,
-  useTheme,
-  themeColor,
 } from "react-native-rapi-ui";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({
 export default function ({
   navigation,
 }: NativeStackScreenProps<AuthStackParamList, "Login">) {
-  const { isDarkmode, setTheme } = useTheme();
+  
   const auth = getAuth();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -106,7 +104,7 @@ export default function ({
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your email"
               placeholderTextColor={"#ff0000"}
-              backgroundColor={"#2b2b2b"}
+              backgroundColor={"#fff"}
               value={email}
               autoCapitalize="none"
               selectionColor={"#000"}
@@ -127,7 +125,7 @@ export default function ({
               containerStyle={{ marginTop: 15 }}
               placeholder="Enter your password"
               value={password}
-              backgroundColor={"#2b2b2b"}
+              backgroundColor={"#fff"}
               autoCapitalize="none"
               autoCompleteType="off"
               autoCorrect={false}
@@ -152,12 +150,13 @@ export default function ({
               
               text={loading ? "Loading" : "Continue"}
               textStyle={{
-                color: "#000",
+                color: "#fff",
               }}
               onPress={() => {
                 login();
               }}
-              color="white"
+              
+              color = "#ff7200"
               style={{
                 marginTop: 20,
                 
@@ -170,12 +169,12 @@ export default function ({
               
               text={loading ? "Loading" : "Sign Up"}
               textStyle={{
-                color: "#fff",
+                color: "#000",
               }}
               onPress={() => {
                 navigation.navigate("Register");
               }}
-              color = "#ff7200"
+              color = "white"
               style={{
                 marginTop: 20,
                 
