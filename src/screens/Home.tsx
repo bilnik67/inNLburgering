@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Linking, Dimensions } from "react-native";
+import { View, Linking, Dimensions, Text } from "react-native";
 import { MainStackParamList } from "../types/navigation";
 import { getAuth, signOut } from "firebase/auth";
 import { Platform, StyleSheet } from 'react-native';
@@ -14,7 +14,6 @@ import {
 import {
   Layout,
   Button,
-  Text,
   TopNav,
   Section,
   SectionContent,
@@ -23,28 +22,10 @@ import {
 } from "react-native-rapi-ui";
 import { Ionicons } from "@expo/vector-icons";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    ...Platform.select({
-      ios: {
-        width: 100,
-        height: 120
-                
-      },
-      android: {
-        width: 120,
-        height: 120
-                
-      },
-      default: {
-        width: 120,
-        height: 120
-                
-      }
-    })
-  }
-})
+const backGColorblue = "#3366ff"
+const backGColororange = "#ff7200"
+const backGBlack = "#2b2b2b"
+const backGColorDarkBlue = "#002db3"
 
 export default function ({
   navigation,
@@ -52,176 +33,147 @@ export default function ({
   const { isDarkmode, setTheme } = useTheme();
   const auth = getAuth();
   return (
-    <Layout>
-      <TopNav
-        middleContent="Home"
+   
+    <View style={styles.container}>
         
-          
-      />
-      <View
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          marginLeft: 10,
-          marginRight: 10,
-          
-        }}
-      >
-        
-        <Section style={{ marginTop: 20 }} > 
-        <Image
-              resizeMode="contain"
-              style={{
-                height: 100,
-                width: 180,
+        <View style={styles.center}></View>
+
+        <View style={styles.bottom}>
+
+          <View style={styles.bottomItem}>
+              <View style={styles.bottomItemInner}>
+                <Image 
+                  style={styles.images}
+                  source={require("../../assets/images/knm.jpg")}
+                />  
+                <View style={styles.directionrow}> 
+                  <Button style={styles.downbottom} color={backGBlack} text='knm' textStyle={{color: '#fff'}}></Button>
+                </View>  
+              </View>
+          </View>
+
+          <View style={styles.bottomItem}>
+          <View style={styles.bottomItemInner}>
+              <Image 
+             
+              style={styles.images}
+              source={require("../../assets/images/schrijven.jpg")}
+             />  
+              <View style={styles.directionrow}> 
+                <Button style={styles.downbottom} color={backGBlack} text='Schrijven' textStyle={{color: '#fff'}}>
                 
-              }}
-              source={require("../../assets/images/schrijven.png")}
-            />  
-          <SectionContent>
-            
-        
-
-            <Button
-              width={140}
-            
-              text="Begin met leren!"
-              onPress={() => {
-                navigation.navigate("SecondScreen");
-              }}
-              
-              style={{
-                height: 120,
+                </Button>
+              </View>
                 
-                marginTop: 10,
-              }}
-              >
-              <Text fontWeight="bold" style={{ textAlign: "center" }}>
-              KNM
-            </Text>
-            
+              </View>
+          </View>
 
+          <View style={styles.bottomItem}>
+              <View style={styles.bottomItemInner}>
+                <Image 
+                  style={styles.images}
+                  source={require("../../assets/images/books.jpg")}
+                />  
+                <View style={styles.directionrow}> 
+                  <Button style={styles.downbottom} color={backGBlack} text='Lezen' textStyle={{color: '#fff'}}></Button>
+                </View>  
+              </View>
+          </View>
+          
+          <View style={styles.bottomItem}>
+              <View style={styles.bottomItemInner}>
+                <Image 
+                  style={styles.images}
+                  source={require("../../assets/images/listen.jpg")}
+                />  
+                <View style={styles.directionrow}> 
+                  <Button style={styles.downbottom} color={backGBlack} text='Luisteren' textStyle={{color: '#fff'}}></Button>
+                </View>  
+              </View>
+          </View>
 
-              </Button>
-            
-            
-          </SectionContent>
-        </Section>
-      
-      
-        <Section style={{ marginTop: 20 }} > 
+          <View style={styles.bottomItem}>
+              <View style={styles.bottomItemInner}>
+                <Image 
+                  style={styles.images}
+                  source={require("../../assets/images/speak.png")}
+                />  
+                <View style={styles.directionrow}> 
+                  <Button style={styles.downbottom} color={backGBlack} text='Spreken' textStyle={{color: '#fff'}}></Button>
+                </View>  
+              </View>
+          </View>
           
-          <SectionContent>
-            <Text fontWeight="bold" style={{ textAlign: "center" }}>
-              Schrijven
-            </Text>
-            
-            <Button
-              width={140}
-              text="Begin met leren!"
-              onPress={() => {
-                navigation.navigate("SecondScreen");
-              }}
-              style={{
-                height: 120,
-                marginTop: 10,
-              }}
-            />
-            
-          </SectionContent>
-        </Section>
-        <Section style={{ marginTop: 20 }} > 
-          
-          <SectionContent>
-            <Text fontWeight="bold" style={{ textAlign: "center" }}>
-              Lezen
-            </Text>
-           
-            <Button
-              width={140}
-              text="Begin met leren!"
-              onPress={() => {
-                navigation.navigate("SecondScreen");
-              }}
-              style={{
-                height: 120,
-                marginTop: 10,
-              }}
-            />
-            
-          </SectionContent>
-        </Section>
-      
-        <Section style={{ marginTop: 20 }} > 
-          
-          <SectionContent>
-            <Text fontWeight="bold" style={{ textAlign: "center" }}>
-              Luisteren
-            </Text>
-           
-            <Button
-              width={140}
-              text="Begin met leren!"
-              onPress={() => {
-                navigation.navigate("SecondScreen");
-              }}
-              style={{
-                height: 120,
-                marginTop: 10,
-              }}
-            />
-            
-          </SectionContent>
-        </Section>
-      
-        <Section style={{ marginTop: 20 }} > 
-          
-          <SectionContent>
-            <Text fontWeight="bold" style={{ textAlign: "center" }}>
-              Spreken
-            </Text>
-           
-            <Button
-              width={140}
-              text="Begin met leren!"
-              onPress={() => {
-                navigation.navigate("SecondScreen");
-              }}
-              style={{
-                height: 120,
-                marginTop: 10,
-              }}
-            />
-            
-          </SectionContent>
-        </Section>
-      
-        <Section style={{ marginTop: 20 }} > 
-          
-          <SectionContent>
-            <Text fontWeight="bold" style={{ textAlign: "center" }}>
-              Toets
-            </Text>
-           
-            <Button
-              width={140}
-              text="Begin met leren!"
-              onPress={() => {
-                navigation.navigate("SecondScreen");
-              }}
-              style={{
-                height: 120,
-                marginTop: 10,
-              }}
-            />
-            
-          </SectionContent>
-        </Section>
-      
+          <View style={styles.bottomItem}>
+              <View style={styles.bottomItemInner}>
+                <Image 
+                  style={styles.images}
+                  source={require("../../assets/images/toets.jpg")}
+                />  
+                <View style={styles.directionrow}> 
+                  <Button style={styles.downbottom} color={backGBlack} text='Toets' textStyle={{color: '#fff'}}></Button>
+                </View>  
+              </View>
+          </View>
+
+        </View>
       </View>
-    </Layout>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: backGColorDarkBlue,
+    
+  },
+  center: {
+    height: '10%',
+    backgroundColor: backGBlack,
+  },
+  
+  bottom: {
+    marginTop: 20,
+    height: '45%',
+    backgroundColor: backGColorDarkBlue,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 5,
+  },
+  bottomItem: {
+   
+    width: '50%',
+    height: '60%',
+    padding: 5,
+    
+  },
+  bottomItemInner: {
+    flex: 1,
+    backgroundColor: backGColorblue,
+    alignItems: 'center',   
+    justifyContent: 'flex-end',    
+    borderRadius: 5,
+  },
+  images: {
+    flex: 1,
+    aspectRatio: 1.4,
+    borderColor: '#ff0000',
+    resizeMode: 'contain',
+    marginTop: 5,
+    borderRadius: 5,
+    
+
+    
+  },
+  directionrow: {
+    flexDirection: 'row',
+    
+  },
+  downbottom: {
+    
+    flexGrow: 1,
+    margin: 5,
+    backgroundColor: backGBlack,
+    marginBottom: 3, 
+   
+  }
+});
