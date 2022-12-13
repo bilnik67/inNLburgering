@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Linking, StyleSheet, Image, Text } from "react-native";
+import { View, Linking, StyleSheet, Image, Text, TouchableNativeFeedbackComponent, TouchableOpacity } from "react-native";
 import { MainStackParamList } from "../types/navigation";
 import { getAuth, signOut } from "firebase/auth";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -11,8 +11,10 @@ import {
   SectionContent,
   useTheme,
   themeColor,
+  TextInput,
 } from "react-native-rapi-ui";
 import { Ionicons } from "@expo/vector-icons";
+import { jsonEval } from "@firebase/util";
 
 const backGColorblue = "#3366ff"
 const backGColororange = "#ff7200"
@@ -40,25 +42,37 @@ export default function ({
 
     <View style={styles.bottom}>
 
-      <View style={styles.bottomItem}>
-          <View style={styles.bottomItemInner}>
-            <Button style={styles.downbottom} text='Age'>
-            
-            </Button>
-          </View>
-      </View>
+     
 
       <View style={styles.bottomItem}>
           <View style={styles.bottomItemInner}>
-            <Button style={styles.downbottom} text='Gender'>
+            <View style={styles.column}>
+              
             
-            </Button>
+
+              
+              <TextInput style={styles.textinput}>
+                 test
+              </TextInput>
+            </View>
+          <Button
+              status="danger"
+              text="Logout"
+              onPress={() => {
+                signOut(auth);
+              }}
+              style={{
+                
+              }}
+            />  
           </View>
       </View>
+      
 
       
 
     </View>
+    
   </View>
 );
 }
@@ -84,25 +98,36 @@ profileimage: {
 center: {
   height: '10%',
   backgroundColor: backGColorblue,
+
  
 },
 centertext: {
   textAlign: 'center',
   fontSize: 35,
   color: '#fff',
+
   fontWeight: 'bold',
 },
 bottom: {
+  flex: 1,
   height: '45%',
   backgroundColor: '#fff',
+  
   flexDirection: 'row',
   flexWrap: 'wrap',
   padding: 5,
 },
 bottomItem: {
-  width: '50%',
-  height: '50%',
+  width: '100%',
+  height: '100%',
   padding: 5,
+},
+column: {
+  flexDirection: 'row',
+  
+},
+textinput: {
+  flexGrow: 2,
 },
 bottomItemInner: {
   flex: 1,
@@ -113,5 +138,10 @@ downbottom: {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+},
+logoutbutton: {
+  backgroundColor: backGColorDarkBlue,
+  borderColor: backGColorDarkBlue,
+  marginBottom: '10%',
 }
 });

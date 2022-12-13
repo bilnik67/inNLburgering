@@ -42,13 +42,20 @@ export default function ({
 
           <View style={styles.bottomItem}>
               <View style={styles.bottomItemInner}>
+                <TouchableOpacity>
                 <Image 
                   style={styles.images}
                   source={require("../../assets/images/knm.jpg")}
                 />  
                 <View style={styles.directionrow}> 
-                  <Button style={styles.downbottom} color={backGBlack} text='knm' textStyle={{color: '#fff'}}></Button>
+                  <Button style={styles.downbottom} color={backGBlack} text='knm' textStyle={{color: '#fff'}}
+                  onPress={() => {
+                    navigation.navigate('knm')
+                  }}>
+
+                  </Button>
                 </View>  
+                </TouchableOpacity>
               </View>
           </View>
 
@@ -60,7 +67,11 @@ export default function ({
               source={require("../../assets/images/schrijven.jpg")}
              />  
               <View style={styles.directionrow}> 
-                <Button style={styles.downbottom} color={backGBlack} text='Schrijven' textStyle={{color: '#fff'}}>
+                <Button style={styles.downbottom} color={backGBlack} text='Schrijven' textStyle={{color: '#fff'}}
+                onPress={() => {
+                  navigation.navigate('schrijven')
+                }}>
+                
                 
                 </Button>
               </View>
@@ -75,7 +86,12 @@ export default function ({
                   source={require("../../assets/images/books.jpg")}
                 />  
                 <View style={styles.directionrow}> 
-                  <Button style={styles.downbottom} color={backGBlack} text='Lezen' textStyle={{color: '#fff'}}></Button>
+                  <Button style={styles.downbottom} color={backGBlack} text='Lezen' textStyle={{color: '#fff'}}
+                  onPress={() => {
+                    navigation.navigate('lezen')
+                  }}>
+
+                  </Button>
                 </View>  
               </View>
           </View>
@@ -87,7 +103,12 @@ export default function ({
                   source={require("../../assets/images/listen.jpg")}
                 />  
                 <View style={styles.directionrow}> 
-                  <Button style={styles.downbottom} color={backGBlack} text='Luisteren' textStyle={{color: '#fff'}}></Button>
+                  <Button style={styles.downbottom} color={backGBlack} text='Luisteren' textStyle={{color: '#fff'}}
+                  onPress={() => {
+                    navigation.navigate('luisteren')
+                  }}>
+
+                  </Button>
                 </View>  
               </View>
           </View>
@@ -99,7 +120,12 @@ export default function ({
                   source={require("../../assets/images/speak.png")}
                 />  
                 <View style={styles.directionrow}> 
-                  <Button style={styles.downbottom} color={backGBlack} text='Spreken' textStyle={{color: '#fff'}}></Button>
+                  <Button style={styles.downbottom} color={backGBlack} text='Spreken' textStyle={{color: '#fff'}}
+                  onPress={() => {
+                    navigation.navigate('spreken')
+                  }}>
+
+                  </Button>
                 </View>  
               </View>
           </View>
@@ -111,7 +137,12 @@ export default function ({
                   source={require("../../assets/images/toets.jpg")}
                 />  
                 <View style={styles.directionrow}> 
-                  <Button style={styles.downbottom} color={backGBlack} text='Toets' textStyle={{color: '#fff'}}></Button>
+                  <Button style={styles.downbottom} color={backGBlack} text='Toets' textStyle={{color: '#fff'}}
+                  onPress={() => {
+                    navigation.navigate('toets')
+                  }}>
+
+                  </Button>
                 </View>  
               </View>
           </View>
