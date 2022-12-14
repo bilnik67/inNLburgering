@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Linking, StyleSheet, Image, Text, TouchableNativeFeedbackComponent, TouchableOpacity } from "react-native";
+import { View, Linking, StyleSheet, Image, Text, TouchableNativeFeedbackComponent, TouchableOpacity, TextInput } from "react-native";
 import { MainStackParamList } from "../types/navigation";
 import { getAuth, signOut } from "firebase/auth";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -11,7 +11,6 @@ import {
   SectionContent,
   useTheme,
   themeColor,
-  TextInput,
 } from "react-native-rapi-ui";
 import { Ionicons } from "@expo/vector-icons";
 import { jsonEval } from "@firebase/util";
@@ -20,6 +19,7 @@ const backGColorblue = "#3366ff"
 const backGColororange = "#ff7200"
 const backGBlack = "#2b2b2b"
 const backGColorDarkBlue = "#002db3"
+const secondwhite = "#fff"
 
 export default function ({
   navigation,
@@ -46,10 +46,38 @@ export default function ({
 
       <View style={styles.bottomItem}>
           <View style={styles.bottomItemInner}>
+          <View style={styles.column}>
+              
+            
+              <Image 
+                    style={styles.images}
+                    source={require("../../assets/images/Icons/email.png")}
+                  />  
+                
+                <TextInput style={styles.textinput}>
+                   test
+                </TextInput>
+              </View>
+              <View style={styles.column}>
+              
+            
+            <Image 
+
+                  style={styles.images}
+                  source={require("../../assets/images/Icons/user.png")}
+                />  
+              
+              <TextInput style={styles.textinput} placeholder={"test2"}>
+                 test
+              </TextInput>
+            </View>
             <View style={styles.column}>
               
             
-
+            <Image 
+                  style={styles.images}
+                  source={require("../../assets/images/Icons/lock.png")}
+                />  
               
               <TextInput style={styles.textinput}>
                  test
@@ -105,7 +133,6 @@ centertext: {
   textAlign: 'center',
   fontSize: 35,
   color: '#fff',
-
   fontWeight: 'bold',
 },
 bottom: {
@@ -123,15 +150,34 @@ bottomItem: {
   padding: 5,
 },
 column: {
+  display: "flex",
   flexDirection: 'row',
+  gap: 10,
+  marginBottom: 30,
+  
   
 },
 textinput: {
-  flexGrow: 2,
+  flex: 1,
+  paddingVertical: 10,
+  fontFamily: "Ubuntu_400Regular",
+  backgroundColor: "#2f2f2f",       
+  color: "#fff", 
+  borderRadius: 10,
+  marginLeft: 15,
+  paddingLeft: 12,
+
+},
+images: {
+ width: "12%",
+ height: "100%",
+ borderRadius: 10,
+ backgroundColor: "#fff",
 },
 bottomItemInner: {
   flex: 1,
-  backgroundColor: '#292929',
+  backgroundColor: secondwhite,
+  borderRadius: 10,
   justifyContent: 'flex-end',
 },
 downbottom: {

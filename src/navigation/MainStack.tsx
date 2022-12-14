@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import SecondScreen from "../screens/SecondScreen";
 import knm from "../screens/Leerstof/knm"
-import schrijven from "../screens/Leerstof/Schrijven"
+import schrijven from "../screens/Leerstof/schrijven"
 import lezen from "../screens/Leerstof/lezen"
 import luisteren from "../screens/Leerstof/luisteren"
 import spreken from "../screens/Leerstof/spreken"
