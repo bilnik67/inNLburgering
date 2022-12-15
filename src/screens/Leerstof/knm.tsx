@@ -11,11 +11,17 @@ import {
 } from "react-native-rapi-ui";
 import { Ionicons } from "@expo/vector-icons";
 
+const backGColorblue = "#3366ff"
+const backGColororange = "#ff7200"
+const backGBlack = "#2b2b2b"
+const backGColorDarkBlue = "#002db3"
+
 export default function ({
   navigation,
 }: NativeStackScreenProps<MainStackParamList, "knm">) {
   const { isDarkmode, setTheme } = useTheme();
   return (
+    <View style={styles.container}>
     <Layout>
       <TopNav
         middleContent="knm"
@@ -40,5 +46,14 @@ export default function ({
         <Text fontWeight="bold">TODO</Text>
       </View>
     </Layout>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex: 1,
+    backgroundColor: backGColorDarkBlue,
+  }
+})

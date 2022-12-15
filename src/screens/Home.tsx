@@ -33,7 +33,15 @@ export default function ({
   const { isDarkmode, setTheme } = useTheme();
   const auth = getAuth();
   return (
-   
+    <Layout>
+    <TopNav
+        
+        middleContent="Home"
+        
+          
+      />
+    
+
     <View style={styles.container}>
         
         <View style={styles.center}></View>
@@ -42,7 +50,10 @@ export default function ({
 
           <View style={styles.bottomItem}>
               <View style={styles.bottomItemInner}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('knm')
+                }}>
                 <Image 
                   style={styles.images}
                   source={require("../../assets/images/knm.jpg")}
@@ -61,12 +72,17 @@ export default function ({
 
           <View style={styles.bottomItem}>
           <View style={styles.bottomItemInner}>
+          <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('schrijven')
+              }}>
               <Image 
              
               style={styles.images}
               source={require("../../assets/images/schrijven.jpg")}
              />  
               <View style={styles.directionrow}> 
+              
                 <Button style={styles.downbottom} color={backGBlack} text='Schrijven' textStyle={{color: '#fff'}}
                 onPress={() => {
                   navigation.navigate('schrijven')
@@ -75,12 +91,16 @@ export default function ({
                 
                 </Button>
               </View>
-                
+              </TouchableOpacity>
               </View>
           </View>
 
           <View style={styles.bottomItem}>
               <View style={styles.bottomItemInner}>
+              <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('lezen')
+              }}>
                 <Image 
                   style={styles.images}
                   source={require("../../assets/images/books.jpg")}
@@ -93,11 +113,16 @@ export default function ({
 
                   </Button>
                 </View>  
+                </TouchableOpacity>
               </View>
           </View>
           
           <View style={styles.bottomItem}>
               <View style={styles.bottomItemInner}>
+              <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('luisteren')
+              }}>
                 <Image 
                   style={styles.images}
                   source={require("../../assets/images/listen.jpg")}
@@ -110,11 +135,16 @@ export default function ({
 
                   </Button>
                 </View>  
+                </TouchableOpacity>
               </View>
           </View>
 
           <View style={styles.bottomItem}>
               <View style={styles.bottomItemInner}>
+              <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('spreken')
+              }}>
                 <Image 
                   style={styles.images}
                   source={require("../../assets/images/speak.png")}
@@ -127,11 +157,16 @@ export default function ({
 
                   </Button>
                 </View>  
+                </TouchableOpacity>
               </View>
           </View>
           
           <View style={styles.bottomItem}>
               <View style={styles.bottomItemInner}>
+              <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('toets')
+              }}>
                 <Image 
                   style={styles.images}
                   source={require("../../assets/images/toets.jpg")}
@@ -141,14 +176,17 @@ export default function ({
                   onPress={() => {
                     navigation.navigate('toets')
                   }}>
+              
 
                   </Button>
-                </View>  
+                </View> 
+                </TouchableOpacity> 
               </View>
           </View>
 
         </View>
       </View>
+      </Layout>
   );
 }
 const styles = StyleSheet.create({
@@ -158,13 +196,12 @@ const styles = StyleSheet.create({
     
   },
   center: {
-    height: '10%',
-    backgroundColor: backGBlack,
+  backgroundColor: backGBlack,
   },
   
   bottom: {
     marginTop: 20,
-    height: '45%',
+    height: '49%',
     backgroundColor: backGColorDarkBlue,
     flexDirection: 'row',
     flexWrap: 'wrap',

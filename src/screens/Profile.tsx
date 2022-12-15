@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Linking, StyleSheet, Image, Text, TouchableNativeFeedbackComponent, TouchableOpacity, TextInput } from "react-native";
 import { MainStackParamList } from "../types/navigation";
+import { Input } from 'react-native-elements'
 import { getAuth, signOut } from "firebase/auth";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
@@ -27,6 +28,14 @@ export default function ({
  
   const auth = getAuth();
   return (
+    <Layout>
+
+      <TopNav
+        
+        middleContent="Profile"
+        
+          
+      />
     <View style={styles.container}>
     <View style={styles.top}>
       
@@ -54,9 +63,9 @@ export default function ({
                     source={require("../../assets/images/Icons/email.png")}
                   />  
                 
-                <TextInput style={styles.textinput}>
-                   test
-                </TextInput>
+                <Text style={styles.textinput}>
+                   ElonMusk@Muskmail.com
+                </Text>
               </View>
               <View style={styles.column}>
               
@@ -67,9 +76,9 @@ export default function ({
                   source={require("../../assets/images/Icons/user.png")}
                 />  
               
-              <TextInput style={styles.textinput} placeholder={"test2"}>
-                 test
-              </TextInput>
+              <Text style={styles.textinput} >
+                 Elon Musk
+              </Text>
             </View>
             <View style={styles.column}>
               
@@ -79,9 +88,9 @@ export default function ({
                   source={require("../../assets/images/Icons/lock.png")}
                 />  
               
-              <TextInput style={styles.textinput}>
-                 test
-              </TextInput>
+              <Text style={styles.textinput} >
+               *********
+              </Text>
             </View>
           <Button
               status="danger"
@@ -102,6 +111,7 @@ export default function ({
     </View>
     
   </View>
+  </Layout>
 );
 }
 
@@ -166,6 +176,8 @@ textinput: {
   borderRadius: 10,
   marginLeft: 15,
   paddingLeft: 12,
+  paddingTop: 15,
+  paddingBottom: 15,
 
 },
 images: {
