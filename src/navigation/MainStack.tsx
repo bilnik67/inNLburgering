@@ -8,6 +8,12 @@ import lezen from "../screens/Leerstof/lezen"
 import luisteren from "../screens/Leerstof/luisteren"
 import spreken from "../screens/Leerstof/spreken"
 import toets from "../screens/Leerstof/toets"
+import knmoef from "../screens/Oefeningen/knmoef"
+import schrijvenoef from "../screens/Oefeningen/schrijvenoef"
+import lezenoef from "../screens/Oefeningen/lezenoef"
+import luisterenoef from "../screens/Oefeningen/luisterenoef"
+import sprekenoef from "../screens/Oefeningen/sprekenoef"
+import toetsoef from "../screens/Oefeningen/toetsoef"
 
 import MainTabs from "./MainTabs";
 
@@ -27,6 +33,13 @@ const Main = () => {
       <MainStack.Screen name="luisteren" component={luisteren}/>
       <MainStack.Screen name="spreken" component={spreken}/>
       <MainStack.Screen name="toets" component={toets}/>
+
+      <MainStack.Screen name="knmoef" component={knmoef}/>
+      <MainStack.Screen name="schrijvenoef" component={schrijvenoef}/>
+      <MainStack.Screen name="lezenoef" component={lezenoef}/>
+      <MainStack.Screen name="luisterenoef" component={luisterenoef}/>
+      <MainStack.Screen name="sprekenoef" component={sprekenoef}/>
+      <MainStack.Screen name="toetsoef" component={toetsoef}/>
 
     </MainStack.Navigator>
   );

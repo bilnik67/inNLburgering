@@ -91,23 +91,9 @@ export default function ({
     <Layout>
       <TopNav
         middleContent="knm"
-        leftContent={
-          <Ionicons
-            name="md-exit-outline"
-            size={25}
-            color={backGColororange}
-            style={styles.icons}
-          />
-        }
-        rightContent={
-          <Ionicons
-            name="close"
-            size={25}
-            color={backGColororange}
-          />
-        }
-        leftAction={() => navigation.goBack()}
-        rightAction={() => navigation.navigate("MainTabs")}
+        
+        
+  
         
       />
       <View style={styles.container}>
@@ -192,7 +178,7 @@ export default function ({
                     ]
                     
                 }}onPress={() => {
-                    navigation.navigate("MainTabs");
+                    navigation.navigate("knmoef");
                   }}>
                     
                     <Text style={{

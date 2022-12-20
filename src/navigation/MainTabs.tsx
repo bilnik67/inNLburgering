@@ -8,6 +8,7 @@ import TabBarText from "../components/utils/TabBarText";
 import Home from "../screens/Home";
 import About from "../screens/About";
 import Profile from "../screens/Profile";
+import Events from "../screens/Events";
 
 const Tabs = createBottomTabNavigator();
 const MainTabs = () => {
@@ -32,6 +33,18 @@ const MainTabs = () => {
           ),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={"md-home"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Events"
+        component={Events}
+        options={{
+          tabBarLabel: ({ focused }) => (
+            <TabBarText focused={focused} title="Events" />
+          ),
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={"calendar"} />
           ),
         }}
       />
