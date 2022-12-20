@@ -7,6 +7,7 @@ import {
   Text,
   useTheme,
   themeColor,
+  Button,
 } from "react-native-rapi-ui";
 import React, {useEffect, useRef, useState} from 'react';
 import animLogo from '../../../assets/images/inNLburgeringlogotransp.png';
@@ -47,13 +48,65 @@ export default function ({
         
       />
       <View style={styles.container}>
+      
         <View style={styles.container2}>
-          <Text style={styles.questiontext}>
-          ①
+        <View style={styles.center}>
+          <Text style={styles.questionnumber}>
+          Question 1 
+          
+          <Text style={styles.questionmaxnumber}>
+             /52
+            </Text>
           </Text>
+         
+          <Image
+            style={styles.iconimage}
+            source={require("../../../assets/images/Icons/test.png")}
+          />
+          </View>
+          <View
+            style={{  
+            borderBottomColor: backGColororange,
+            borderBottomWidth: 2,
+            
+            marginTop: "2%",
+            width: "96%",
+            }}
+            />
+          <View style={styles.center2}>
+          
+          <Text style={styles.questiontext}> 
+            Wanneer bel je naar het alarmnummer?
+          </Text>
+          <Button  style={styles.answerbutton} color={backGBlack} text='De buren hebben ruzie.' textStyle={{color: '#fff'}}
+                  onPress={() => {
+                    //TODO
+                  }}/>
+          <Button  style={styles.answerbutton} color={backGBlack} text='Iemand heeft zijn been gebroken.' textStyle={{color: '#fff'}}
+                  onPress={() => {
+                    //TODO
+                  }}/>
+          <Button  style={styles.answerbutton} color={backGBlack} text='Je fiets is gestolen.' textStyle={{color: '#fff'}}
+                  onPress={() => {
+                    //TODO
+                  }}/>
 
+          <Button
+              
+              text={"Continue"}
+              textStyle={{
+                color: "#fff",
+              }}
+              onPress={() => {
+                //TODO
+              }}  
+              color = "#ff7200"
+              style={styles.continuebutton}         
+              
+            />
+
+          </View>
         </View>
-
       </View>
       
       
@@ -75,27 +128,74 @@ const styles = StyleSheet.create({
     transform: [{rotateY: '180deg'}],
     width: "200%",
   },
+  iconimage: {
+ 
+    marginTop: "2%",
+    marginLeft: "30%",
+    height: "100%",
+    width: "12%",
+    resizeMode: 'contain',
+    
+  
+  },
   container2: {
-   
+    
     height: "95%",
     borderRadius: 12,
     width: "94%",   
     backgroundColor: backGColorblue,
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-
+    flexDirection: 'column',
+    alignItems: "center",
+   
+    
    
   },
-  questiontext: {
+  questionnumber: {
    
     color: backGColororange,
-    fontSize: 50,
-    fontWeight: "bold",
+    fontSize: 34,
+    fontWeight: "800",
     textAlign: "center",
     borderColor: backGColororange,
-    marginTop: "5%",
-    marginLeft: "4%",
+    marginTop: "4%"
     
+    
+    
+  },
+  questionmaxnumber: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 24,
+    
+  },
+  center: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    
+    
+  },
+  center2: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },  
+  questiontext: {
+    
+    marginTop: "15%",
+    marginBottom: "15%",
+    fontSize: 30,
+    fontWeight: "bold",
+    
+    
+  },
+  answerbutton: {
+    marginTop: "2%",
+  },
+  continuebutton: {
+    marginTop: "20%",
+    height: "10%",
   }
+
   
 })
