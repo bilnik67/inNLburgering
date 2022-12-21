@@ -9,9 +9,11 @@ import {
   themeColor,
   Button,
 } from "react-native-rapi-ui";
+import {Pressable} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
+import RadioButton from './components/RadioButton';
 import animLogo from '../../../assets/images/inNLburgeringlogotransp.png';
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const backGColorblue = "#3366ff"
 const backGColororange = "#ff7200"
@@ -21,7 +23,16 @@ const backGColorDarkBlue = "#002db3"
 export default function ({
   navigation,
 }: NativeStackScreenProps<MainStackParamList, "knm">) {
+  
   const { isDarkmode, setTheme } = useTheme();
+
+  const [userOption, setUserOption] = useState(null);
+
+  const data = [
+    { value: 'De buren hebben ruzie.' }, 
+    { value: 'Iemand zijn been is gebroken.' },
+    { value: 'Je fiets is gestolen.' },
+  ];
 
   return (
     
@@ -60,6 +71,7 @@ export default function ({
           </Text>
          
           <Image
+          
             style={styles.iconimage}
             source={require("../../../assets/images/Icons/test.png")}
           />
@@ -78,6 +90,41 @@ export default function ({
           <Text style={styles.questiontext}> 
             Wanneer bel je naar het alarmnummer?
           </Text>
+          {data.map((item) => {
+          return (
+   
+            <Pressable
+            
+            style={ 
+              item.value === userOption ? styles.selected : styles.unselected 
+            } 
+            onPress={() => setUserOption(item.value)}
+          >
+           <View style={styles.spacebetween}>
+
+            <Text style={styles.option}> {item.value}</Text>
+            {
+            userOption == item.value ? (
+            <MaterialCommunityIcons name="check" style={{
+            color: "#fff",
+            backgroundColor: "green",
+            marginTop: "2%",
+            borderRadius: 30/2,
+            fontSize: 20,
+            
+           }}
+           />
+            ) : null
+           }
+            </View>
+          </Pressable>
+
+        ); 
+      })}
+
+      <Text style={{marginTop: "10%"}}> User option: {userOption}</Text>
+      
+{/*           
           <Button  style={styles.answerbutton} color={backGBlack} text='De buren hebben ruzie.' textStyle={{color: '#fff'}}
                   onPress={() => {
                     //TODO
@@ -89,16 +136,16 @@ export default function ({
           <Button  style={styles.answerbutton} color={backGBlack} text='Je fiets is gestolen.' textStyle={{color: '#fff'}}
                   onPress={() => {
                     //TODO
-                  }}/>
+                  }}/> */}
 
           <Button
               
-              text={"Continue"}
+              text={"Result"}
               textStyle={{
                 color: "#fff",
               }}
               onPress={() => {
-                //TODO
+                //if (userOption == )
               }}  
               color = "#ff7200"
               style={styles.continuebutton}         
@@ -195,7 +242,39 @@ const styles = StyleSheet.create({
   continuebutton: {
     marginTop: "20%",
     height: "10%",
-  }
+  },
+  spacebetween: {
+    flexDirection: "row",
+    marginHorizontal: "1%",
+    marginEnd: "2%",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  option: {
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center',
+    marginTop: "2%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    
+  },
+  unselected: {
+    backgroundColor: backGBlack,
+    margin: "1.5%",
+    borderRadius: 10,
+    height: "7%",
+    borderWidth: 2.5 ,
+    borderColor: "#000"
+  },
+  selected: {
+    backgroundColor: backGBlack,
+    margin: "1.5%",
+    borderRadius: 10,
+    height: "7%",
+    borderWidth: 2.5 ,
+    borderColor: backGColororange
+  },
 
   
 })
