@@ -20,6 +20,7 @@ const backGColororange = "#ff7200"
 const backGBlack = "#2b2b2b"
 const backGColorDarkBlue = "#002db3"
 
+
 export default function ({
   navigation,
 }: NativeStackScreenProps<MainStackParamList, "knm">) {
@@ -32,6 +33,7 @@ export default function ({
     { value: 'De buren hebben ruzie.' }, 
     { value: 'Iemand zijn been is gebroken.' },
     { value: 'Je fiets is gestolen.' },
+  
   ];
 
   return (
@@ -90,39 +92,31 @@ export default function ({
           <Text style={styles.questiontext}> 
             Wanneer bel je naar het alarmnummer?
           </Text>
-          {data.map((item) => {
+          { React.Children.toArray(
+          data.map((item, i) => {
+          
           return (
    
             <Pressable
-            
+            key={i}
             style={ 
               item.value === userOption ? styles.selected : styles.unselected 
             } 
-            onPress={() => setUserOption(item.value)}
+            onPress={() => setUserOption(item.value) }
           >
-           <View style={styles.spacebetween}>
+           
+           <View style={styles.spacebetween} >
 
-            <Text style={styles.option}> {item.value}</Text>
-            {
-            userOption == item.value ? (
-            <MaterialCommunityIcons name="check" style={{
-            color: "#fff",
-            backgroundColor: "green",
-            marginTop: "2%",
-            borderRadius: 30/2,
-            fontSize: 20,
+            <Text style={styles.option} key={i}> {item.value} + {i}</Text>
             
-           }}
-           />
-            ) : null
-           }
             </View>
           </Pressable>
-
+          
         ); 
-      })}
+        
+      }))}
 
-      <Text style={{marginTop: "10%"}}> User option: {userOption}</Text>
+      <Text style={{marginTop: "10%"}}> User option: {userOption} </Text>
       
 {/*           
           <Button  style={styles.answerbutton} color={backGBlack} text='De buren hebben ruzie.' textStyle={{color: '#fff'}}
@@ -138,19 +132,32 @@ export default function ({
                     //TODO
                   }}/> */}
 
-          <Button
+          { <Button
               
               text={"Result"}
               textStyle={{
                 color: "#fff",
               }}
               onPress={() => {
-                //if (userOption == )
+                {
+                 if( userOption === {i} ) {
+                  <MaterialCommunityIcons name="check" style={{
+                  color: "#fff",
+                  backgroundColor: "green",
+                  marginTop: "2%",
+                  borderRadius: 30/2,
+                  fontSize: 20,
+                
+                  
+                 }}
+                 />
+                }
+              }
               }}  
               color = "#ff7200"
               style={styles.continuebutton}         
               
-            />
+            /> }
 
           </View>
         </View>
