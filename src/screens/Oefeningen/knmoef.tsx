@@ -21,6 +21,21 @@ const backGBlack = "#2b2b2b"
 const backGColorDarkBlue = "#002db3"
 
 
+function addicon () {
+  <MaterialCommunityIcons name="check" style={{
+    color: "#fff",
+    backgroundColor: "green",
+    marginTop: "2%",
+    borderRadius: 30/2,
+    fontSize: 20,
+  
+    
+   }}
+   />
+  }
+
+
+
 export default function ({
   navigation,
 }: NativeStackScreenProps<MainStackParamList, "knm">) {
@@ -104,19 +119,41 @@ export default function ({
             } 
             onPress={() => setUserOption(item.value) }
           >
-           
-           <View style={styles.spacebetween} >
-
-            <Text style={styles.option} key={i}> {item.value} + {i}</Text>
             
+          
+           <View style={styles.spacebetween} >
+            
+            <Text style={styles.option} key={i}>  {item.value} </Text>
+           
+            
+            {userOption == item.value && i == 1  ?
+              <MaterialCommunityIcons name="check" style={{
+                color: "#fff",
+                backgroundColor: "green",
+                marginTop: "2%",
+                borderRadius: 30/2,
+                fontSize: 20,
+      
+        
+
+
+              }}
+              />
+            : null
+            }
+            
+           
             </View>
+            
           </Pressable>
+          
           
         ); 
         
       }))}
-
+        
       <Text style={{marginTop: "10%"}}> User option: {userOption} </Text>
+      
       
 {/*           
           <Button  style={styles.answerbutton} color={backGBlack} text='De buren hebben ruzie.' textStyle={{color: '#fff'}}
@@ -139,21 +176,9 @@ export default function ({
                 color: "#fff",
               }}
               onPress={() => {
-                {
-                 if( userOption === {i} ) {
-                  <MaterialCommunityIcons name="check" style={{
-                  color: "#fff",
-                  backgroundColor: "green",
-                  marginTop: "2%",
-                  borderRadius: 30/2,
-                  fontSize: 20,
-                
-                  
-                 }}
-                 />
-                }
+                addicon
               }
-              }}  
+              }
               color = "#ff7200"
               style={styles.continuebutton}         
               
