@@ -43,6 +43,10 @@ export default function ({
   const { isDarkmode, setTheme } = useTheme();
 
   const [userOption, setUserOption] = useState(null);
+  const [showIcon, setShowIcon] = useState(false);
+  const [showfirstfalseanswer, setshowfirstfalseanswer] = useState(false);
+  const [showsecondfalseanswer, setshowsecondfalseanswer] = useState(false);
+  const [showbuttonone, setshowbuttonone] = useState(true);
 
   const data = [
     { value: 'De buren hebben ruzie.' }, 
@@ -126,22 +130,46 @@ export default function ({
             <Text style={styles.option} key={i}>  {item.value} </Text>
            
             
-            {userOption == item.value && i == 1  ?
+            {i == 0  ?
+              <MaterialCommunityIcons name="close" style={{
+                color: "#fff",
+                backgroundColor: "red",
+                marginTop: "2%",
+                borderRadius: 30/2,
+                display: showfirstfalseanswer ? 'flex' : 'none',
+                fontSize: 20,
+              }}
+              />
+            : null
+          }
+            {i == 1  ?
               <MaterialCommunityIcons name="check" style={{
                 color: "#fff",
                 backgroundColor: "green",
                 marginTop: "2%",
                 borderRadius: 30/2,
+                display: showIcon ? 'flex' : 'none',
                 fontSize: 20,
-      
-        
-
-
               }}
               />
             : null
-            }
             
+           
+            }
+             {i == 2  ?
+              <MaterialCommunityIcons name="close" style={{
+                color: "#fff",
+                backgroundColor: "red",
+                marginTop: "2%",
+                borderRadius: 30/2,
+                display: showsecondfalseanswer ? 'flex' : 'none',
+                fontSize: 20,
+              }}
+              />
+            : null
+            
+            }
+               
            
             </View>
             
@@ -151,10 +179,10 @@ export default function ({
         ); 
         
       }))}
-        
-      <Text style={{marginTop: "10%"}}> User option: {userOption} </Text>
-      
-      
+      <View style={styles.explanationborder}>
+          <Text style={{display: showfirstfalseanswer || showsecondfalseanswer ? 'flex' : 'none'}}> Uitleg: je belt het alarmnummer alleen bij levensgevaar.</Text>
+          <Text style={{ display: showIcon == true && showfirstfalseanswer == false && showsecondfalseanswer == false? 'flex' : 'none', }} >Heel goed!</Text>
+          </View>
 {/*           
           <Button  style={styles.answerbutton} color={backGBlack} text='De buren hebben ruzie.' textStyle={{color: '#fff'}}
                   onPress={() => {
@@ -169,21 +197,52 @@ export default function ({
                     //TODO
                   }}/> */}
 
-          { <Button
+           { showbuttonone ? 
+           <Button
               
               text={"Result"}
               textStyle={{
                 color: "#fff",
               }}
               onPress={() => {
-                addicon
-              }
+                if (userOption == "De buren hebben ruzie.") {
+                  setshowfirstfalseanswer(true)
+                  setShowIcon(true)
+                  
+                }
+                if (userOption == "Je fiets is gestolen.") {
+                  setshowsecondfalseanswer(true)
+                  setShowIcon(true)
+                  
+                }
+                if (userOption == "Iemand zijn been is gebroken.")
+                {
+                  setShowIcon(true)
+                  
+                }
+                setshowbuttonone(false)
+               }
               }
               color = "#ff7200"
               style={styles.continuebutton}         
               
-            /> }
-
+            /> :
+            <Button
+              
+            text={"Continue"}
+            textStyle={{
+              color: "#fff",
+            }}
+            onPress={() => {
+              
+             }
+            }
+            color = "#ff7200"
+            style={styles.continuebutton}         
+            
+          />
+            
+          }
           </View>
         </View>
       </View>
@@ -307,6 +366,13 @@ const styles = StyleSheet.create({
     borderWidth: 2.5 ,
     borderColor: backGColororange
   },
+  explanationborder: {
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "bold",
+    marginTop: "10%"
+  }
 
   
 })
