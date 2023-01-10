@@ -13,27 +13,15 @@ import {Pressable} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import RadioButton from './components/RadioButton';
 import animLogo from '../../../assets/images/inNLburgeringlogotransp.png';
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons"; 
+import {questionsknm} from "../Vragen/knmvragen"
+
 
 const backGColorblue = "#3366ff"
 const backGColororange = "#ff7200"
 const backGBlack = "#2b2b2b"
 const backGColorDarkBlue = "#002db3"
-
-
-function addicon () {
-  <MaterialCommunityIcons name="check" style={{
-    color: "#fff",
-    backgroundColor: "green",
-    marginTop: "2%",
-    borderRadius: 30/2,
-    fontSize: 20,
-  
-    
-   }}
-   />
-  }
-
+var questionIndex = 1;
 
 
 export default function ({
@@ -41,19 +29,49 @@ export default function ({
 }: NativeStackScreenProps<MainStackParamList, "knm">) {
   
   const { isDarkmode, setTheme } = useTheme();
+  
 
   const [userOption, setUserOption] = useState(null);
   const [showIcon, setShowIcon] = useState(false);
-  const [showfirstfalseanswer, setshowfirstfalseanswer] = useState(false);
-  const [showsecondfalseanswer, setshowsecondfalseanswer] = useState(false);
   const [showbuttonone, setshowbuttonone] = useState(true);
+  const [questionnumber, setquestionnumber] = useState(questionIndex);
+  const currentquestion = questionsknm[questionnumber - 1];
+  const [chosennumber, setchosennumber] = useState(-1);
+  const [questionansweredright, setquestionansweredright] = useState(false);
 
-  const data = [
-    { value: 'De buren hebben ruzie.' }, 
-    { value: 'Iemand zijn been is gebroken.' },
-    { value: 'Je fiets is gestolen.' },
+ 
+
+  function resetQuestion() {
+    questionIndex = questionIndex + 1
+    setquestionnumber(questionIndex)
+    setUserOption(null);
+    setShowIcon(false);
+    setshowbuttonone(true);
+    setchosennumber(-1);
+    setquestionansweredright(false);
+  }
+  function RightAnswer() {
   
-  ];
+    if (userOption == currentquestion.options[0]) {
+        setchosennumber(0);
+       
+    }
+    else if (userOption == currentquestion.options[1]) {
+        setchosennumber(1);
+      
+    }
+    else if (userOption == currentquestion.options[2]) {
+        setchosennumber(2);
+      
+    }
+    if (userOption == currentquestion.correctAnswer[0]) {    
+      setquestionansweredright(true);
+    } 
+    
+
+  }
+
+  
 
   return (
     
@@ -84,7 +102,7 @@ export default function ({
         <View style={styles.container2}>
         <View style={styles.center}>
           <Text style={styles.questionnumber}>
-          Question 1 
+          Question {questionnumber}
           
           <Text style={styles.questionmaxnumber}>
              /52
@@ -97,6 +115,7 @@ export default function ({
             source={require("../../../assets/images/Icons/test.png")}
           />
           </View>
+          
           <View
             style={{  
             borderBottomColor: backGColororange,
@@ -109,44 +128,66 @@ export default function ({
           <View style={styles.center2}>
           
           <Text style={styles.questiontext}> 
-            Wanneer bel je naar het alarmnummer?
+            {currentquestion.text} 
+        
           </Text>
           { React.Children.toArray(
-          data.map((item, i) => {
+          currentquestion.options.map((item, i) => {
           
           return (
    
             <Pressable
             key={i}
             style={ 
-              item.value === userOption ? styles.selected : styles.unselected 
+              item === userOption ? styles.selected : styles.unselected 
             } 
-            onPress={() => setUserOption(item.value) }
+            onPress={() => {chosennumber != -1 ? null : setUserOption(item)} }
           >
-            
+           
           
            <View style={styles.spacebetween} >
             
-            <Text style={styles.option} key={i}>  {item.value} </Text>
+            <Text style={styles.option} key={i}>  {item} </Text>
            
             
-            {i == 0  ?
+            {i == 0 && chosennumber == 0 && i != currentquestion.correctAnswer[1] ?
               <MaterialCommunityIcons name="close" style={{
                 color: "#fff",
-                backgroundColor: "red",
-                marginTop: "2%",
+                backgroundColor: "red",        
                 borderRadius: 30/2,
-                display: showfirstfalseanswer ? 'flex' : 'none',
+            
                 fontSize: 20,
               }}
               />
             : null
           }
-            {i == 1  ?
+          {i == 1 && chosennumber == 1 && i != currentquestion.correctAnswer[1]  ?
+              <MaterialCommunityIcons name="close" style={{
+                color: "#fff",
+                backgroundColor: "red",        
+                borderRadius: 30/2,
+            
+                fontSize: 20,
+              }}
+              />
+            : null
+          }
+          {i == 2 && chosennumber == 2 && i != currentquestion.correctAnswer[1] ?
+              <MaterialCommunityIcons name="close" style={{
+                color: "#fff",
+                backgroundColor: "red",        
+                borderRadius: 30/2,
+            
+                fontSize: 20,
+              }}
+              />
+            : null
+          }
+            {i == currentquestion.correctAnswer[1] ?
               <MaterialCommunityIcons name="check" style={{
                 color: "#fff",
                 backgroundColor: "green",
-                marginTop: "2%",
+                
                 borderRadius: 30/2,
                 display: showIcon ? 'flex' : 'none',
                 fontSize: 20,
@@ -156,19 +197,7 @@ export default function ({
             
            
             }
-             {i == 2  ?
-              <MaterialCommunityIcons name="close" style={{
-                color: "#fff",
-                backgroundColor: "red",
-                marginTop: "2%",
-                borderRadius: 30/2,
-                display: showsecondfalseanswer ? 'flex' : 'none',
-                fontSize: 20,
-              }}
-              />
-            : null
-            
-            }
+             
                
            
             </View>
@@ -180,8 +209,33 @@ export default function ({
         
       }))}
       <View style={styles.explanationborder}>
-          <Text style={{display: showfirstfalseanswer || showsecondfalseanswer ? 'flex' : 'none'}}> Uitleg: je belt het alarmnummer alleen bij levensgevaar.</Text>
-          <Text style={{ display: showIcon == true && showfirstfalseanswer == false && showsecondfalseanswer == false? 'flex' : 'none', }} >Heel goed!</Text>
+        {/* Wanneer een antwoord fout beantwoord is. */}
+      <MaterialCommunityIcons name="exclamation" style={{
+                color: "#fff",
+                backgroundColor: backGColorDarkBlue,
+                marginLeft: "2%",
+                marginRight: "3%",
+                borderRadius: 30,
+                display: questionansweredright == false && showIcon == true ? 'flex' : 'none',
+                fontSize: 35,
+              }}
+              />
+              {/* Wanneer een antwoord goed beantwoord is. */}
+              <MaterialCommunityIcons name="check" style={{
+                color: "#fff",
+                backgroundColor: "green",
+                marginLeft: "2%",
+                marginRight: "3%",
+                borderRadius: 30,
+                display: questionansweredright ? 'flex' : 'none',
+                fontSize: 35,
+              }}
+              />
+              
+          {/* Wanneer een antwoord fout beantwoord is. */}
+          <Text style={{display: questionansweredright == false && showIcon == true ? 'flex' : 'none', flex: 1}}>{currentquestion.Explanation}</Text>
+          {/* Wanneer een antwoord goed beantwoord is. */}
+          <Text style={{ display: questionansweredright ? 'flex' : 'none', flex: 1}} >{currentquestion.Explanation}</Text>
           </View>
 {/*           
           <Button  style={styles.answerbutton} color={backGBlack} text='De buren hebben ruzie.' textStyle={{color: '#fff'}}
@@ -205,22 +259,10 @@ export default function ({
                 color: "#fff",
               }}
               onPress={() => {
-                if (userOption == "De buren hebben ruzie.") {
-                  setshowfirstfalseanswer(true)
-                  setShowIcon(true)
-                  
-                }
-                if (userOption == "Je fiets is gestolen.") {
-                  setshowsecondfalseanswer(true)
-                  setShowIcon(true)
-                  
-                }
-                if (userOption == "Iemand zijn been is gebroken.")
-                {
-                  setShowIcon(true)
-                  
-                }
-                setshowbuttonone(false)
+                RightAnswer();              
+                setShowIcon(true);
+                setshowbuttonone(false);
+                
                }
               }
               color = "#ff7200"
@@ -235,6 +277,7 @@ export default function ({
             }}
             onPress={() => {
               
+              resetQuestion();
              }
             }
             color = "#ff7200"
@@ -269,7 +312,7 @@ const styles = StyleSheet.create({
   iconimage: {
  
     marginTop: "2%",
-    marginLeft: "30%",
+    marginLeft: "25%",
     height: "100%",
     width: "12%",
     resizeMode: 'contain',
@@ -314,15 +357,22 @@ const styles = StyleSheet.create({
     
   },
   center2: {
-    display: "flex",
-    flexDirection: "column",
+    flex: 1,
+    top : 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    position: 'absolute',
     justifyContent: "center",
+
   },  
   questiontext: {
-    
-    marginTop: "15%",
-    marginBottom: "15%",
-    fontSize: 30,
+  
+  
+    flexWrap: 'wrap',
+    fontSize: 25,
+    marginBottom: "7%",
+    textAlign: 'center',
     fontWeight: "bold",
     
     
@@ -331,12 +381,16 @@ const styles = StyleSheet.create({
     marginTop: "2%",
   },
   continuebutton: {
-    marginTop: "20%",
+
     height: "10%",
+    margin: '1.5%',
+    marginTop: "8%",
+    
+    
+
   },
   spacebetween: {
     flexDirection: "row",
-    marginHorizontal: "1%",
     marginEnd: "2%",
     alignItems: "center",
     justifyContent: "space-between",
@@ -345,33 +399,38 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'white',
     textAlign: 'center',
-    marginTop: "2%",
-    alignItems: "center",
-    justifyContent: "space-between",
+ 
+
     
   },
   unselected: {
     backgroundColor: backGBlack,
+    marginTop: "3%",
+    padding: "3%",
     margin: "1.5%",
     borderRadius: 10,
-    height: "7%",
     borderWidth: 2.5 ,
+
     borderColor: "#000"
   },
   selected: {
     backgroundColor: backGBlack,
+    
+    padding: "3%",
     margin: "1.5%",
     borderRadius: 10,
-    height: "7%",
     borderWidth: 2.5 ,
     borderColor: backGColororange
   },
   explanationborder: {
-    textAlign: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    fontWeight: "bold",
-    marginTop: "10%"
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    
+   
+    marginTop: "5%",
+ 
+   
   }
 
   
