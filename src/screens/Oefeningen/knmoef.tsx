@@ -11,8 +11,6 @@ import {
 } from "react-native-rapi-ui";
 import {Pressable} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-import RadioButton from './components/RadioButton';
-import animLogo from '../../../assets/images/inNLburgeringlogotransp.png';
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons"; 
 import {questionsknm} from "../Vragen/knmvragen"
 
@@ -105,7 +103,7 @@ export default function ({
           Question {questionnumber}
           
           <Text style={styles.questionmaxnumber}>
-             /52
+             /12
             </Text>
           </Text>
          
@@ -233,7 +231,7 @@ export default function ({
               />
               
           {/* Wanneer een antwoord fout beantwoord is. */}
-          <Text style={{display: questionansweredright == false && showIcon == true ? 'flex' : 'none', flex: 1}}>{currentquestion.Explanation}</Text>
+          <Text style={{display: questionansweredright == false && showIcon == true ? 'flex' : 'none', justifyContent: 'center', flex: 1}}>{currentquestion.Explanation}</Text>
           {/* Wanneer een antwoord goed beantwoord is. */}
           <Text style={{ display: questionansweredright ? 'flex' : 'none', flex: 1}} >{currentquestion.Explanation}</Text>
           </View>
@@ -259,10 +257,11 @@ export default function ({
                 color: "#fff",
               }}
               onPress={() => {
+                if (userOption != null) {
                 RightAnswer();              
                 setShowIcon(true);
                 setshowbuttonone(false);
-                
+              }
                }
               }
               color = "#ff7200"
