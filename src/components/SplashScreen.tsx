@@ -19,72 +19,13 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
   
     const edges = useSafeAreaInsets();
 
-   
-    const moveLogo = useRef(new Animated.ValueXY({ x: + 200, y: + 200 })).current;
-    const moveText = useRef(new Animated.ValueXY({ x:  -300, y:  -300 })).current;
-    const fadeAnim = useRef(new Animated.Value(0)).current;
-    const visibleAnim = useRef(new Animated.Value(0)).current;
 
-   
         
-    const  animatedStyle = {
-        opacity: fadeAnim
-    }
-
-    
-        Animated.timing(
-           
-            fadeAnim, 
-            {
-            
-            toValue: 1,
-            delay: 1000,
-            duration: 1000,
-            useNativeDriver: true,
-        }).start();
-      
-
-    function timeout(delay: number) {
-        return new Promise( res => setTimeout(res, delay) );
-    }
-
-    useEffect(()=>{
-
-        setTimeout(() => {
-
-            Animated.sequence([
-                Animated.timing(
-                    moveLogo,
-                    {
-                        toValue: -Dimensions.get('window').height + 780,
-                        useNativeDriver: true
-                    }
-                )
-            ])
-            .start(); 
-        }, 1000);
-    }, [])
-    useEffect(()=>{
-
-        setTimeout(() => {
-
-            Animated.sequence([
-                Animated.timing(
-                    moveText,
-                    {
-                        toValue: -Dimensions.get('window').height + 660,
-                        useNativeDriver: true
-                    }
-                )
-            ])
-            .start(); 
-        }, 750);
-    }, [])
-    
+   
 
     return(
         
-        <Animated.View style={{
+        <View style={{
             position: "absolute",
             top: 0,
             bottom: 0,
@@ -93,25 +34,18 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
             backgroundColor: backGColorblue,        
             
         }}>
-            <Animated.View style={{
-                display: 'flex', 
-
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: 'row',
+            <View style={{
+                display: "flex",
                 
             }}>
             
-                <Animated.Image source={animLogo} style={{
+                <Image source={animLogo} style={{
                      
-                    width:380,
-                    height:380,
+                    width: Dimensions.get('screen').width * 1,
+                    height: Dimensions.get('screen').height * 0.1,
+                    marginTop: '20%',
                     
-                    transform: [
-                        
-                        { translateY: moveLogo.y },
-                    ]
-                }}></Animated.Image>
+                }}></Image>
                 {/*<Text style={{
                     fontSize: 40,
                     fontWeight: 'bold',
@@ -119,39 +53,32 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                 }}>
                     Welcome,
             </Text> */}
-            </Animated.View>
+            </View>
             
-                <Animated.Text  style={{
-                    opacity: fadeAnim,
+                <Text  style={{
+               
                     
-                    
-                    justifyContent: "center",
-                    alignItems: "center",
                     textAlign: "center",
-                    fontSize: 20,
+                    fontSize: Dimensions.get('screen').width * 0.05,
                     color: 'white',
-                    transform: [
-                        
-                        { translateY: moveText.y },
-                    ]
+                    marginBottom: "10%",
                     
                 }}>
                    {/*inNLburgeren is een concept ontwikkeld door een groep eerste jaars ICT-studenten van Fontys. Het streven van inNLburgeren is oefenmateriaal/cursussen bieden aan inburgeraars in Nederland. Een complicatie waar inburgeraars tegenaan lopen is dat er online geen (gratis) oefenmateriaal beschikbaar is. inNLburgeren biedt hierbij een oplossing, alle leerstof is gratis en overal te oefenen. inNLburgeren heeft een website, desktopapp en mobiele app zodat U overal makkelijk de lesstof kan oefenen en begrijpen. Maak een account aan en krijg toegang tot de oefenopdrachten en uw eigen leerproces.*/}
                    inNLburgeren is a concept developed by a group of first-year ICT students from Fontys. The aim of inNLburgeren is to offer practice material/courses to people integrating in the Netherlands. A complication encountered by people integrating is that there is no (free) practice material available online. inNLburgeren offers a solution for this, all learning material is free and can be practiced anywhere. inNLburgeren has a website, desktop app and mobile app so that you can easily practice and understand the lesson material anywhere. Create an account to get started!
-                   </Animated.Text>
+                   </Text>
                    <View style={{
                    
                     justifyContent: "center",
                     alignItems: "center",
                    }}>
-                    <Animated.View style={{
-                    opacity: fadeAnim,
-                    }}>
+                    <View style={{
+                            }}>
                 <TouchableOpacity style={{
                     
-                    marginTop: -Dimensions.get('window').height * 0.07,
-                    width: 300,
-                    height: 60,
+                    
+                    width: Dimensions.get('screen').width * 0.85,
+                    height: Dimensions.get('screen').height * 0.1,
                     borderWidth: 2,
                     borderColor: 'white',
                     borderRadius: 6,
@@ -159,9 +86,7 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                     alignItems: "center",
                     backgroundColor: backGColororange,
                 
-                    transform: [
-                        {translateY: -50}
-                    ]
+                    
                     
                 }}onPress={() => {
                     navigation.navigate("Login");
@@ -178,9 +103,9 @@ export default function SplashScreen({navigation, }: NativeStackScreenProps<Auth
                         Continue
                     </Text>
                 </TouchableOpacity>
-                </Animated.View>
                 </View>
-            </Animated.View>
+                </View>
+            </View>
             
        
     );

@@ -66,7 +66,7 @@ export const questionsknm = [
       id: 10,
       text: 'Als je kiest voor een eigen risico, betaal je alle kosten zelf',
       options: ['Waar.', 'Niet waar.'],
-      correctAnswer: ['Niet waar', 1],
+      correctAnswer: ['Niet waar.', 1],
       Explanation: 'Eigen risico is slechts een gedeelte van de schaden wat een verzekeraar niet vergoed en wat je dus zelf moet betalen.',
     },
     {

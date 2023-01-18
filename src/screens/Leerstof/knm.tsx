@@ -23,66 +23,6 @@ export default function ({
   const { isDarkmode, setTheme } = useTheme();
 
 
-  const moveLogo = useRef(new Animated.ValueXY({ x: + 200, y: + 200 })).current;
-    const moveText = useRef(new Animated.ValueXY({ x:  -300, y:  -300 })).current;
-    const fadeAnim = useRef(new Animated.Value(0)).current;
-    const visibleAnim = useRef(new Animated.Value(0)).current;
-
-   
-        
-    const  animatedStyle = {
-        opacity: fadeAnim
-    }
-
-    
-        Animated.timing(
-           
-            fadeAnim, 
-            {
-            
-            toValue: 1,
-            delay: 1000,
-            duration: 1000,
-            useNativeDriver: true,
-        }).start();
-      
-
-    function timeout(delay: number) {
-        return new Promise( res => setTimeout(res, delay) );
-    }
-
-    useEffect(()=>{
-
-        setTimeout(() => {
-
-            Animated.sequence([
-                Animated.timing(
-                    moveLogo,
-                    {
-                        toValue: -Dimensions.get('window').height + 720,
-                        useNativeDriver: true
-                    }
-                )
-            ])
-            .start(); 
-        }, 1000);
-    }, [])
-    useEffect(()=>{
-
-        setTimeout(() => {
-
-            Animated.sequence([
-                Animated.timing(
-                    moveText,
-                    {
-                        toValue: -Dimensions.get('window').height + 600,
-                        useNativeDriver: true
-                    }
-                )
-            ])
-            .start(); 
-        }, 750);
-    }, [])
 
 
 
@@ -98,7 +38,7 @@ export default function ({
       />
       <View style={styles.container}>
        
-      <Animated.View style={{
+      <View style={{
             position: "absolute",
             top: 0,
             bottom: 0,
@@ -107,65 +47,54 @@ export default function ({
             backgroundColor: backGColorDarkBlue,        
             
         }}>
-            <Animated.View style={{
-                display: 'flex', 
-
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: 'row',
+            <View style={{
+                
                 
             }}>
             
-                <Animated.Image source={animLogo} style={{
+            <Image source={animLogo} style={{
                      
-                    width:380,
-                    height:380,
+                     width: Dimensions.get('screen').width * 1,
+                     height: Dimensions.get('screen').height * 0.1,
+                     marginTop: '15%',
+                     marginBottom: "10%",
+                     
+                 }}></Image>
+                 {/*<Text style={{
+                     fontSize: 40,
+                     fontWeight: 'bold',
+                     color: 'white',
+                 }}>
+                     Welcome,
+             </Text> */}
+             </View>
+             
+                 <Text  style={{
+                
+                     
+                     textAlign: "center",
+                     fontSize: Dimensions.get('screen').width * 0.05,
+                     color: 'white',
+                     marginBottom: "20%",
+                     marginLeft: "1%",  
+                     marginRight: "1%",
+                     
+                 }}>
                     
-                    transform: [
-                        
-                        { translateY: moveLogo.y },
-                    ]
-                }}></Animated.Image>
-                {/*<Text style={{
-                    fontSize: 40,
-                    fontWeight: 'bold',
-                    color: 'white',
-                }}>
-                    Welcome,
-            </Text> */}
-            </Animated.View>
-            
-                <Animated.Text  style={{
-                    opacity: fadeAnim,
+                    Knm stands for "Kennis van de Nederlandse Maatschappij", it is a section of the dutch intergration exam. In this section you would need to have knowledge of the Dutch History, culture and traditions. In this exercise you can practise and learn about these subjects. Please press "Start exercise" to start learning about knm.
+                    </Text>
+                    <View style={{
                     
-                    
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center",
-                    fontSize: 20,
-                    color: 'white',
-                    transform: [
-                        
-                        { translateY: moveText.y },
-                    ]
-                    
-                }}>
-                   {/*inNLburgeren is een concept ontwikkeld door een groep eerste jaars ICT-studenten van Fontys. Het streven van inNLburgeren is oefenmateriaal/cursussen bieden aan inburgeraars in Nederland. Een complicatie waar inburgeraars tegenaan lopen is dat er online geen (gratis) oefenmateriaal beschikbaar is. inNLburgeren biedt hierbij een oplossing, alle leerstof is gratis en overal te oefenen. inNLburgeren heeft een website, desktopapp en mobiele app zodat U overal makkelijk de lesstof kan oefenen en begrijpen. Maak een account aan en krijg toegang tot de oefenopdrachten en uw eigen leerproces.*/}
-                   inNLburgeren is a concept developed by a group of first-year ICT students from Fontys. The aim of inNLburgeren is to offer practice material/courses to people integrating in the Netherlands. A complication encountered by people integrating is that there is no (free) practice material available online. inNLburgeren offers a solution for this, all learning material is free and can be practiced anywhere. inNLburgeren has a website, desktop app and mobile app so that you can easily practice and understand the lesson material anywhere. Create an account to get started!
-                   </Animated.Text>
-                   <View style={{
-                   
-                    justifyContent: "center",
-                    alignItems: "center",
-                   }}>
-                    <Animated.View style={{
-                    opacity: fadeAnim,
+                     justifyContent: "center",
+                     alignItems: "center",
                     }}>
+                     <View style={{
+                             }}>
                 <TouchableOpacity style={{
                     
                     marginTop: -Dimensions.get('window').height * 0.07,
-                    width: 300,
-                    height: 60,
+                    width: Dimensions.get('screen').width * 0.85,
+                    height: Dimensions.get('screen').height * 0.08,
                     borderWidth: 2,
                     borderColor: 'white',
                     borderRadius: 6,
@@ -173,9 +102,7 @@ export default function ({
                     alignItems: "center",
                     backgroundColor: backGColororange,
                 
-                    transform: [
-                        {translateY: -Dimensions.get('window').height + 680}
-                    ]
+                    
                     
                 }}onPress={() => {
                     navigation.navigate("knmoef");
@@ -192,9 +119,9 @@ export default function ({
                         Start exercise
                     </Text>
                 </TouchableOpacity>
-                </Animated.View>
                 </View>
-            </Animated.View>
+                </View>
+            </View>
 
             </View>
       
@@ -210,11 +137,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: backGColorDarkBlue,
   },
-  icons: {
-    transform: [{rotateY: '180deg'}],
-    width: "200%",
- 
   
-  }
   
 })

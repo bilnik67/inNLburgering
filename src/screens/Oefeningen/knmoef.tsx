@@ -79,7 +79,7 @@ export default function ({
         leftContent={
           <Ionicons
             name="md-exit-outline"
-            size={25}
+            size={Dimensions.get('screen').width * 0.08}
             color={backGColororange}
             style={styles.icons}
           />
@@ -87,8 +87,9 @@ export default function ({
         rightContent={
           <Ionicons
             name="close"
-            size={25}
+            size={Dimensions.get('screen').width * 0.08 }
             color={backGColororange}
+            style={styles.icons}
           />
         }
         leftAction={() => navigation.goBack()}
@@ -229,11 +230,11 @@ export default function ({
                 fontSize: 35,
               }}
               />
-              
           {/* Wanneer een antwoord fout beantwoord is. */}
-          <Text style={{display: questionansweredright == false && showIcon == true ? 'flex' : 'none', justifyContent: 'center', flex: 1}}>{currentquestion.Explanation}</Text>
+          <Text style={{display: questionansweredright == false && showIcon == true ? 'flex' : 'none', justifyContent: 'center', flex: 1, fontSize: Dimensions.get('screen').scale * 7}}>{currentquestion.Explanation}</Text>
           {/* Wanneer een antwoord goed beantwoord is. */}
-          <Text style={{ display: questionansweredright ? 'flex' : 'none', flex: 1}} >{currentquestion.Explanation}</Text>
+          <Text style={{ display: questionansweredright ? 'flex' : 'none', flex: 1, fontSize: Dimensions.get('screen').scale * 7 }} >{currentquestion.Explanation}</Text>
+            
           </View>
 {/*           
           <Button  style={styles.answerbutton} color={backGBlack} text='De buren hebben ruzie.' textStyle={{color: '#fff'}}
@@ -333,7 +334,7 @@ const styles = StyleSheet.create({
   questionnumber: {
    
     color: backGColororange,
-    fontSize: 34,
+    fontSize: Dimensions.get('screen').width * 0.09,
     fontWeight: "800",
     textAlign: "center",
     borderColor: backGColororange,
@@ -345,7 +346,7 @@ const styles = StyleSheet.create({
   questionmaxnumber: {
     color: "#fff",
     fontWeight: "700",
-    fontSize: 24,
+    fontSize: Dimensions.get('screen').width * 0.06,
     
   },
   center: {
@@ -355,6 +356,7 @@ const styles = StyleSheet.create({
     
     
   },
+ 
   center2: {
     flex: 1,
     top : 0,
@@ -369,7 +371,8 @@ const styles = StyleSheet.create({
   
   
     flexWrap: 'wrap',
-    fontSize: 25,
+    fontSize: Dimensions.get("screen").scale * 9,
+    marginTop: "20%",
     marginBottom: "7%",
     textAlign: 'center',
     fontWeight: "bold",
@@ -395,7 +398,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   option: {
-    fontSize: 20,
+    fontSize: Dimensions.get('screen').scale * 8,
     color: 'white',
     textAlign: 'center',
  
@@ -425,8 +428,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     overflow: 'hidden',
-    
-   
+    fontSize: Dimensions.get('screen').scale * 0.01,
     marginTop: "5%",
  
    
